@@ -80,9 +80,9 @@ public class Scrabble {
 	// into it, at random indexes, the letters 'a' and 'e'
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
-		String random = MyString.randomStringOfLetters(HAND_SIZE -2);
+		String random = MyString.randomStringOfLetters(HAND_SIZE - 2);
 		String strWithA = MyString.insertRandomly('a', random);
-		String finalstr = MyString.insertRandomly('c', strWithA);
+		String finalstr = MyString.insertRandomly('e', strWithA);
 		
 		return finalstr;
 	}
@@ -104,6 +104,9 @@ public class Scrabble {
 			// non-whitespace characters. Whitespace is either space characters, or  
 			// end-of-line characters.
 			String input = in.readString();
+			if (input.equals(".")) {
+				break;
+			}
 			if (isWordInDictionary(input)) {
 				if (MyString.subsetOf(input, hand)) {
 					int wordScore = wordScore(input);
@@ -137,11 +140,14 @@ public class Scrabble {
 			// Gets the user's input, which is all the characters entered by 
 			// the user until the user enter the ENTER character.
 			String input = in.readString();
+			
 			if (input.equals("n")) {
 				String hand = createHand();
 				playHand(hand);
+
 			} else if (input.equals("e")) {
 				System.out.println("End of game");
+				break;
 
 			} else {
 				System.out.println(("Invalid input. Please enter 'n' for a new hand or 'e' to end the game."));

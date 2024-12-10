@@ -79,7 +79,7 @@ public class MyString {
     public static String spacedString(String str) {
 
         String newStr = "";
-        if (str == "") {
+        if (str.equals("")) {
             return newStr;
         }
         for (int i = 0; i < str.length() - 1; i++) {
