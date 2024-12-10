@@ -54,7 +54,7 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-        if (str1 == null || str2 == null || str1.length() < str2.length()) {
+        if (str1.length() > str2.length()) {
             return false;
         }
         for (int i = 0; i < str1.length(); i++) {
@@ -67,17 +67,11 @@ public class MyString {
         }
         return true;
     }
-    // char currentChar = str1.charAt(i);
-    // if (countChar(str2, currentChar) == 0) {
-    //     return false;
-    // } else {
-      
-    // }
 
     /** Returns a string which is the same as the given string, with a space
      * character inserted after each character in the given string, except
      * for the last character. 
-     * Example: spacedString("silent") returns "s i l e n t"
+     * Example: spacedString("silent") returns "s i l e n t";
      * 
      * @param str - a string
      * @return a string consisting of the characters of str, separated by spaces.
