@@ -104,21 +104,23 @@ public class Scrabble {
 			// non-whitespace characters. Whitespace is either space characters, or  
 			// end-of-line characters.
 			String input = in.readString();
+
+			if (input.equals(".")) {
+				System.out.println("End of hand. Total score: " + score + " points");
+				break;
+			}
 			if (!isWordInDictionary(input)) {
 				System.out.println("No such word in the dictionary. Try again.");
-				break;
+				continue;
 			}
 			if (MyString.subsetOf(input, hand)) {
 				int wordScore = wordScore(input);
 				score += wordScore;
 				hand = MyString.remove(input, hand);
 				System.out.println(input + " earned " + wordScore + " points.  Score:" + score + " points");
+			} else {
+				System.out.println("Invalid word. Try again.");
 			}
-			if (input.equals(".")) {
-				System.out.println("End of hand. Total score: " + score + " points");
-				break;
-			}
-
 	
 			//// that completes the hand playing loop
 		}
